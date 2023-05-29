@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final_Worakamon🥐</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <style>
+        #mapid {
+            height: 800px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="w3-row">
+        <div id="mapid" class="w3-half"></div>
+        <div id="content" class="w3-half">
+            <table class="w3-table w3-striped">
+                <tr>
+                    <th>ร้านอาหาร</th>
+                    <th>ประเภท</th>
+                    <th>คะแนนความนิยม</th>
+                </tr>
+                <tr>
+                    <td>โออิชิ</td>
+                    <td>ญี่ปุ่น</td>
+                    <td>5</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var map = L.map("mapid").setView([13.756478200889013, 100.51600860710246], 8);
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        var Stadia_Outdoors = L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png', {
+            maxZoom: 20,
+            attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+        var OMS_DE = L.tileLayer('https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        var baseMaps = {
+            OSM: osm,
+            Stadia_Outdoors: Stadia_Outdoors,
+            OpenStreetmap_DE: OMS_DE,
+        };
+
+        var restaurantpoint = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "SavoeyThaMaharaj",
+                        "ประเภท": "อาหารซีฟู้ด",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.48871173538669,
+                            13.755338198008218
+                        ],
+                        "type": "Point"
+                    },
+                    "id": 0
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "LukKaiThong",
+                        "ประเภท": "อาหารไทย-จีน",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.51120366741367,
+                            13.726703552194238
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "OHKAJHU",
+                        "ประเภท": "อาหารเฮลตี้",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.53237194723113,
+                            13.744854061191162
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "BanNamKiengDin",
+                        "ประเภท": "อาหารผสมผสาน",
+                        "คะแนนความนิยม": 5
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.35783338758671,
+                            13.777212548193347
+                        ],
+                        "type": "Point"
+                    },
+                    "id": 3
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "Ranee'srestaurant",
+                        "ประเภท": "อาหารอิตาเลี่ยน",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.49575866741145,
+                            13.758824724515492
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "SanaeChan",
+                        "ประเภท": "อาหารไทย",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.55154672343645,
+                            13.839422316330044
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "KonchongKonprung",
+                        "ประเภท": "อาหารไทย-จีน",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.55291600325972,
+                            13.788970369708593
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "Somsakpuob",
+                        "ประเภท": "อาหารซีฟู้ด",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.49637100325828,
+                            13.727012552170933
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "OngtongKhaosoi",
+                        "ประเภท": "อาหารเหนือ",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.54458972343662,
+                            13.781144724732584
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "ร้านอาหาร": "BaanBenjarongPai",
+                        "ประเภท": "อาหารไทย",
+                        "คะแนนความนิยม": 4
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            100.4483812830847,
+                            13.809587545617617
+                        ],
+                        "type": "Point"
+                    }
+                }
+            ]
+        };
+
+        var restaurantLayer = L.geoJSON(restaurantpoint, {
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng).bindPopup(feature.properties.ร้านอาหาร);
+            },
+            onEachFeature: function (feature, layer) {
+                layer.on("mouseover", function () {
+                    document.getElementById(feature.properties.ร้านอาหาร).classList.add("w3-red");
+                });
+
+                layer.on("mouseout", function () {
+                    document.getElementById(feature.properties.ร้านอาหาร).classList.remove("w3-red");
+                });
+            },
+        }).addTo(map);
+
+        var cont = "";
+        cont += "<table class='w3-table w3-striped'>";
+        cont += "<tr>";
+        cont += "<th>ร้านอาหาร</th>";
+        cont += "<th>ประเภท</th>";
+        cont += "<th>คะแนนความนิยม</th>";
+        cont += "</tr>";
+        for (let i in restaurantpoint.features) {
+            cont += "<tr id=" + restaurantpoint.features[i].properties.ร้านอาหาร + ">";
+            cont += "<td>" + restaurantpoint.features[i].properties.ร้านอาหาร + "</td>";
+            cont += "<td>" + restaurantpoint.features[i].properties.ประเภท + "</td>";
+            cont += "<td>" + restaurantpoint.features[i].properties.คะแนนความนิยม + "</td>";
+            cont += "</tr>";
+        }
+        cont += "</table>";
+        console.log(cont);
+        document.getElementById("content").innerHTML = cont;
+        var overlays = { "ร้านอากหารชื่อดัง": restaurantLayer };
+
+        L.control.layers(baseMaps, overlays).addTo(map);
+    </script>
+</body>
+
+</html>
